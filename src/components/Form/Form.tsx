@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Form.module.css";
+import {FocusEvent} from 'react'
 
 const Form: React.FC = () => {
   const [currency1, setCurrency1] = useState("usd");
@@ -47,6 +48,8 @@ const Form: React.FC = () => {
     currency2,
   ]);
 
+  const selectTextWhenFocus = (event: FocusEvent<HTMLInputElement>) => event.target.select();
+
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
@@ -55,8 +58,9 @@ const Form: React.FC = () => {
           <div>
             <input
               min={0}
+              onFocus={selectTextWhenFocus}
               onChange={(event) => {
-                setAmount1(+event.target.value);
+                setAmount1(Number(event.target.value));
                 setAmountToUpdate("amount2");
                 setCurrenciesFetched(false);
               }}
@@ -69,7 +73,6 @@ const Form: React.FC = () => {
               className={styles.select}
               onChange={(event) => {
                 setCurrency1(event.target.value);
-                setAmountToUpdate("amount2");
                 setCurrenciesFetched(false);
               }}
             >
@@ -85,7 +88,7 @@ const Form: React.FC = () => {
           <div>
             <input
               onChange={(event) => {
-                setAmount2(+event.target.value);
+                setAmount2(Number(event.target.value));
                 setAmountToUpdate("amount1");
                 setCurrenciesFetched(false);
               }}
@@ -94,12 +97,12 @@ const Form: React.FC = () => {
               type="number"
               min={0}
               value={amount2}
+              onFocus={selectTextWhenFocus}
             />
             <select
               className={styles.select}
               onChange={(event) => {
                 setCurrency2(event.target.value);
-
                 setCurrenciesFetched(false);
               }}
             >
