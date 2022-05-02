@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(15, 16, 16, 0.35);
+  padding: 1rem 1rem;
+  box-shadow: 0px 7px 18px -4px rgba(7, 10, 5, 0.35);
+  margin-bottom: 2rem;
+}
+
+.logo {
+  font-family: "Lato", sans-serif;
+  color: #ffffff99;
+  font-size: 1.3rem;
+  letter-spacing: 0.3rem;
+}
+
+.currencies {
+  display: flex;
+}
+
+.currency {
+  padding-left: 1rem;
+}
+
+.currencyValue {
+  color: #ffffff99;
+  padding: 0 0.1rem;
+}
+
+@media (max-width: 576px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo {
+    margin-bottom: 1rem;
+  }
+}
